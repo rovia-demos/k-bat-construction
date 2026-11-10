@@ -309,7 +309,7 @@ button{font:inherit;color:inherit}
 .map__towns circle{fill:var(--slate);stroke:#fff;stroke-width:2}
 .map__towns text{font:650 15px "Hanken";fill:var(--slate)}
 .map__homet{font:700 17px "Bricolage";fill:var(--terra)}
-.map__src{position:absolute;right:8px;bottom:6px;font-size:.7rem;color:var(--slate-3);background:rgba(243,240,234,.85);padding:1px 6px;border-radius:4px}
+.map__src{position:absolute;right:8px;bottom:6px;font-size:.7rem;color:var(--slate-3);background:rgba(243,240,234,.9);padding:4px 10px;border-radius:6px}
 @media (prefers-reduced-motion:no-preference){
   .js .map__towns g{opacity:0;transform:translateY(6px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:calc(var(--i) * 70ms)}
   .js .map.is-in .map__towns g{opacity:1;transform:none}
