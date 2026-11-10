@@ -58,10 +58,15 @@
   if (!reduce) {
     const wipes = [...$$('.grid figure'), ...$$('.srv__img'), $('.bento__a'), $('.bento__e')].filter(Boolean);
     $$('.grid figure').forEach((f, i) => { f.style.transitionDelay = (i % 3) * 90 + 'ms'; });
+    // une image entièrement masquée n'est jamais « vue » (ni chargée) : on observe sa carte à la place
+    const targets = new Map();
     const wio = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('is-in'); wio.unobserve(e.target); }
+      if (e.isIntersecting) { targets.get(e.target).classList.add('is-in'); wio.unobserve(e.target); }
     }), { rootMargin: '0px 0px -12% 0px' });
-    wipes.forEach(el => { el.classList.add('wipe'); wio.observe(el); });
+    wipes.forEach(el => {
+      const t = el.closest('.srv__item') || el;
+      el.classList.add('wipe'); targets.set(t, el); wio.observe(t);
+    });
   }
 
   // Apparition douce au défilement
