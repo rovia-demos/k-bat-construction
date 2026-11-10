@@ -241,9 +241,11 @@
     sim.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
   });
 
-  // Barre de contact mobile : visible seulement après les boutons du hero
+  // Après les boutons du hero : barre de contact (téléphone) et bouton devis dans l'en-tête (ordinateur)
   const callbar = $('#callbar');
   new IntersectionObserver(([e]) => {
-    callbar.classList.toggle('is-on', !e.isIntersecting && e.boundingClientRect.top < 0);
+    const past = !e.isIntersecting && e.boundingClientRect.top < 0;
+    callbar.classList.toggle('is-on', past);
+    header.classList.toggle('cta-on', past);
   }).observe($('#hero-ctas'));
 })();
