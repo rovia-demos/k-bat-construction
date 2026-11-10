@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" media="(min-width: 768px)" href="assets/img/hero-1600.webp" imagesrcset="assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="100vw">
 <link rel="preload" as="image" media="(max-width: 767px)" href="assets/img/hero-m-720.webp" imagesrcset="assets/img/hero-m-720.webp 720w, assets/img/hero-m-1080.webp 1080w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,7 +39,7 @@
   "sameAs": ["https://www.facebook.com/p/K-bat-construction-61570720221980/"]
 }
 </script>
-<script src="assets/js/main.js?v=3" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -324,35 +324,34 @@
         <title id="map-t">Morières-lès-Avignon au centre, et les communes desservies dans un rayon d’environ 12 km</title>
         <defs>
           <radialGradient id="glow"><stop offset="0" stop-color="#B04A23" stop-opacity=".22"/><stop offset="1" stop-color="#B04A23" stop-opacity="0"/></radialGradient>
-          <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="#24292E" opacity=".12"/></pattern>
         </defs>
-        <rect width="640" height="440" fill="url(#dots)"/>
-        <path class="map__river" d="M-10 120 C 60 140, 110 180, 140 230 S 170 330, 150 450" />
-        <path class="map__river map__river--s" d="M120 400 C 220 380, 300 400, 380 392 S 520 360, 650 380" />
-        <text class="map__rv" x="78" y="168" transform="rotate(52 78 168)">Rhône</text>
-        <text class="map__rv" x="470" y="392" transform="rotate(-6 470 392)">Durance</text>
+        <!-- Fond de carte réel (routes, Rhône, Durance, zones bâties) tiré d'OpenStreetMap, échelle 19 px = 1 km -->
+        <image href="assets/img/carte-zone.svg" width="640" height="440"/>
         <circle cx="320" cy="236" r="190" class="map__ring"/>
         <circle cx="320" cy="236" r="95" class="map__ring"/>
-        <text class="map__km" x="320" y="133">5 km</text>
-        <text class="map__km" x="320" y="38">10 km</text>
+        <text class="map__km" x="320" y="345">5 km</text>
+        <text class="map__km" x="320" y="420">10 km</text>
         <circle cx="320" cy="236" r="120" fill="url(#glow)"/>
+        <text class="map__rv" x="58" y="318" transform="rotate(-38 58 318)">Rhône</text>
+        <text class="map__rv" x="168" y="300" transform="rotate(15 168 300)">Durance</text>
         <g class="map__towns">
-          <g style="--i:1"><circle cx="172" cy="245" r="7"/><text x="172" y="270" text-anchor="middle">Avignon</text></g>
-          <g style="--i:2"><circle cx="256" cy="219" r="5"/><text x="248" y="206" text-anchor="end">Le Pontet</text></g>
-          <g style="--i:3"><circle cx="272" cy="278" r="5"/><text x="262" y="300" text-anchor="end">Montfavet</text></g>
-          <g style="--i:4"><circle cx="321" cy="186" r="5"/><text x="321" y="172" text-anchor="middle">Vedène</text></g>
-          <g style="--i:5"><circle cx="356" cy="130" r="5"/><text x="366" y="126">Entraigues-sur-la-Sorgue</text></g>
-          <g style="--i:6"><circle cx="355" cy="232" r="5"/><text x="366" y="228">Saint-Saturnin</text></g>
-          <g style="--i:7"><circle cx="380" cy="292" r="5"/><text x="392" y="296">Châteauneuf-de-Gadagne</text></g>
-          <g style="--i:8"><circle cx="387" cy="365" r="5"/><text x="399" y="369">Caumont-sur-Durance</text></g>
-          <g style="--i:9"><circle cx="546" cy="309" r="6"/><text x="546" y="334" text-anchor="middle">L’Isle-sur-la-Sorgue</text></g>
+          <g style="--i:1"><circle cx="169" cy="222" r="7"/><text x="156" y="227" text-anchor="end">Avignon</text></g>
+          <g style="--i:2"><circle cx="252" cy="194" r="5"/><text x="242" y="190" text-anchor="end">Le Pontet</text></g>
+          <g style="--i:3"><circle cx="265" cy="254" r="5"/><text x="255" y="259" text-anchor="end">Montfavet</text></g>
+          <g style="--i:4"><circle cx="318" cy="159" r="5"/><text x="318" y="145" text-anchor="middle">Vedène</text></g>
+          <g style="--i:5"><circle cx="354" cy="110" r="5"/><text x="364" y="115">Entraigues-sur-la-Sorgue</text></g>
+          <g style="--i:6"><circle cx="358" cy="206" r="5"/><text x="368" y="202">Saint-Saturnin</text></g>
+          <g style="--i:7"><circle cx="380" cy="268" r="5"/><text x="390" y="276">Châteauneuf-de-Gadagne</text></g>
+          <g style="--i:8"><circle cx="382" cy="339" r="5"/><text x="392" y="344">Caumont-sur-Durance</text></g>
+          <g style="--i:9"><circle cx="544" cy="287" r="6"/><text x="544" y="312" text-anchor="middle">L’Isle-sur-la-Sorgue</text></g>
         </g>
         <g class="map__home">
           <circle cx="320" cy="236" r="18" class="map__pulse"/>
           <circle cx="320" cy="236" r="10" fill="#B04A23" stroke="#F7F5F1" stroke-width="3"/>
-          <text x="320" y="264" text-anchor="middle" class="map__homet">Morières-lès-Avignon</text>
+          <text x="338" y="241" class="map__homet">Morières-lès-Avignon</text>
         </g>
       </svg>
+      <figcaption class="map__src">Fond de carte © les contributeurs d’OpenStreetMap</figcaption>
     </figure>
   </div>
 </section>

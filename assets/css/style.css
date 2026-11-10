@@ -205,10 +205,10 @@ button{font:inherit;color:inherit}
 .filters button:hover{background:var(--stone)}
 .filters button.is-on{background:var(--slate);color:#fff}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(170px,21vw,290px);grid-auto-flow:dense;gap:18px}
-.grid li{transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.grid{transition:opacity .2s}
+.grid.is-swap{opacity:0}
 .grid li.is-big{grid-column:span 2;grid-row:span 2}
 .grid li.is-big.is-right{grid-column:2 / span 2}
-.grid li.is-out{opacity:0;transform:scale(.97)}
 .grid li[hidden]{display:none}
 .grid figure{margin:0;position:relative;height:100%;border-radius:var(--r);overflow:hidden;background:var(--stone)}
 .grid img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
@@ -280,16 +280,16 @@ button{font:inherit;color:inherit}
 .towns li{padding:7px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.93rem;font-weight:550}
 .zone__note{margin-top:22px;color:var(--slate-2)}
 .zone__note a{color:var(--terra);font-weight:650}
-.map{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:clamp(8px,2vw,20px);box-shadow:var(--shadow)}
-.map svg{width:100%;height:auto;overflow:visible}
-.map__river{fill:none;stroke:#BFD3D6;stroke-width:10;stroke-linecap:round;opacity:.8}
-.map__river--s{stroke-width:7}
-.map__rv{font:italic 500 13px "Hanken";fill:#6E9196}
-.map__ring{fill:none;stroke:var(--slate);stroke-opacity:.2;stroke-dasharray:3 6}
+.map{position:relative;margin:0;background:#F3F0EA;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.map svg{display:block;width:100%;height:auto}
+.map text{paint-order:stroke;stroke:#F3F0EA;stroke-width:4px;stroke-linejoin:round}
+.map__rv{font:italic 600 13px "Hanken";fill:#5E8489}
+.map__ring{fill:none;stroke:var(--slate);stroke-opacity:.35;stroke-dasharray:3 6}
 .map__km{font:600 11px "Hanken";fill:var(--slate-3);text-anchor:middle;letter-spacing:.06em}
-.map__towns circle{fill:var(--slate)}
-.map__towns text{font:600 15px "Hanken";fill:var(--slate)}
+.map__towns circle{fill:var(--slate);stroke:#fff;stroke-width:2}
+.map__towns text{font:650 15px "Hanken";fill:var(--slate)}
 .map__homet{font:700 17px "Bricolage";fill:var(--terra)}
+.map__src{position:absolute;right:8px;bottom:6px;font-size:.7rem;color:var(--slate-3);background:rgba(243,240,234,.85);padding:1px 6px;border-radius:4px}
 @media (prefers-reduced-motion:no-preference){
   .js .map__towns g{opacity:0;transform:translateY(6px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:calc(var(--i) * 70ms)}
   .js .map.is-in .map__towns g{opacity:1;transform:none}

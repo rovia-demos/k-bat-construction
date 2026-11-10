@@ -111,31 +111,42 @@
   }
 
   // Galerie : 6 photos au départ, « Voir tout » pour le reste ; mosaïque sans trou
-  const fBtns = $$('.filters button'), items = $$('#grid li'), more = $('#works-more');
-  let f = 'all', all = false;
-  const layout = () => {
+  const fBtns = $$('.filters button'), items = $$('#grid li'), more = $('#works-more'), grid = $('#grid');
+  let f = 'all', all = false, tok = 0;
+  const apply = () => {
     const vis = items.filter((li, i) => f === 'all' ? (all || i < 6) : li.dataset.cat === f);
-    items.forEach(li => {
-      li.classList.remove('is-big', 'is-right', 'is-wide-m');
-      if (vis.includes(li)) { li.hidden = false; requestAnimationFrame(() => li.classList.remove('is-out')); }
-      else { li.classList.add('is-out'); setTimeout(() => { if (li.classList.contains('is-out')) li.hidden = true; }, reduce ? 0 : 300); }
-    });
+    items.forEach(li => { li.hidden = !vis.includes(li); li.classList.remove('is-big', 'is-right', 'is-wide-m'); });
     // ordinateur : une grande photo par groupe de 6, alternée gauche / droite
     vis.forEach((li, i) => { if (i % 6 === 0) li.classList.add('is-big'); if (i % 12 === 6) li.classList.add('is-right'); });
     // téléphone (2 colonnes) : nombre impair -> la première photo prend toute la largeur
     if (vis.length % 2) vis[0].classList.add('is-wide-m');
     more.parentNode.hidden = all || f !== 'all';
+    return vis;
+  };
+  // changement de filtre : la grille s'efface, change, attend ses photos, puis réapparaît (jamais de mélange)
+  const swap = () => {
+    if (reduce) return apply();
+    const t = ++tok;
+    grid.classList.add('is-swap');
+    setTimeout(() => {
+      if (t !== tok) return;
+      const imgs = apply().map(li => li.querySelector('img'));
+      imgs.forEach(img => { img.loading = 'eager'; });
+      Promise.race([Promise.all(imgs.map(img => img.decode().catch(() => {}))), new Promise(r => setTimeout(r, 600))])
+        .then(() => { if (t === tok) grid.classList.remove('is-swap'); });
+    }, 200);
   };
   fBtns.forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.f === f) return;
     f = b.dataset.f;
     fBtns.forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
-    layout();
+    swap();
   }));
   more.addEventListener('click', () => {
-    all = true; layout();
+    all = true; apply();
     items[6].tabIndex = -1; items[6].focus({ preventScroll: true });
   });
-  layout();
+  apply();
 
   // Frise des étapes : la ligne se trace et les étapes s'allument une à une
   const frise = $('#frise');

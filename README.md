@@ -41,3 +41,7 @@ Tous sont repérés dans le code par le commentaire `EXEMPLE – à remplacer`.
 ## Modifier un service
 
 Dans `index.html`, section `#services` : chaque service est un `<li class="srv__item">` avec un titre `<h3>`, un texte `<p>` et sa photo `<img class="srv__img">` (`srv-xxx-600.webp` + `srv-xxx-1000.webp`).
+
+## Carte de la zone
+
+Fond de carte réel tiré des données OpenStreetMap (`assets/img/carte-zone.svg`, mention « © les contributeurs d’OpenStreetMap » obligatoire). Les villes sont placées à leurs vraies coordonnées, 19 px = 1 km, Morières au centre.
