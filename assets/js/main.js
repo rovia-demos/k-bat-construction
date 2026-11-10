@@ -54,19 +54,22 @@
     $('.hero__raw').addEventListener('animationend', () => hero.classList.add('is-done'));
   }
 
-  // Photos qui se dévoilent au défilement (galerie, services, « pourquoi nous »)
+  // Photos des services et de la galerie : téléchargées bien avant d'arriver à l'écran
+  const early = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    $$('img[loading=lazy]', e.target).forEach(img => { img.loading = 'eager'; });
+    early.unobserve(e.target);
+  }), { rootMargin: '1500px 0px' });
+  ['#services', '#realisations'].forEach(s => early.observe($(s)));
+
+  // Photos qui se dévoilent au défilement (galerie, « pourquoi nous »)
   if (!reduce) {
-    const wipes = [...$$('.grid figure'), ...$$('.srv__img'), $('.bento__a'), $('.bento__e')].filter(Boolean);
+    const wipes = [...$$('.grid figure'), $('.bento__a'), $('.bento__e')].filter(Boolean);
     $$('.grid figure').forEach((f, i) => { f.style.transitionDelay = (i % 3) * 90 + 'ms'; });
-    // une image entièrement masquée n'est jamais « vue » (ni chargée) : on observe sa carte à la place
-    const targets = new Map();
     const wio = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { targets.get(e.target).classList.add('is-in'); wio.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('is-in'); wio.unobserve(e.target); }
     }), { rootMargin: '0px 0px -12% 0px' });
-    wipes.forEach(el => {
-      const t = el.closest('.srv__item') || el;
-      el.classList.add('wipe'); targets.set(t, el); wio.observe(t);
-    });
+    wipes.forEach(el => { el.classList.add('wipe'); wio.observe(el); });
   }
 
   // Apparition douce au défilement
