@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" media="(min-width: 768px)" href="assets/img/hero-1600.webp" imagesrcset="assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="100vw">
 <link rel="preload" as="image" media="(max-width: 767px)" href="assets/img/hero-m-720.webp" imagesrcset="assets/img/hero-m-720.webp 720w, assets/img/hero-m-1080.webp 1080w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link rel="stylesheet" href="assets/css/style.css?v=3">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,7 +39,7 @@
   "sameAs": ["https://www.facebook.com/p/K-bat-construction-61570720221980/"]
 }
 </script>
-<script src="assets/js/main.js?v=2" defer></script>
+<script src="assets/js/main.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -127,38 +127,30 @@
     </div>
 
     <div class="srv">
-      <div class="srv__media" aria-hidden="true">
-        <img class="is-on" data-srv="0" src="assets/img/srv-platrerie-1000.webp" width="1000" height="1250" alt="" loading="lazy" decoding="async">
-        <img data-srv="1" src="assets/img/srv-placo-1000.webp" width="1000" height="1250" alt="" loading="lazy" decoding="async">
-        <img data-srv="2" src="assets/img/srv-plafond-1000.webp" width="1000" height="1250" alt="" loading="lazy" decoding="async">
-        <img data-srv="3" src="assets/img/srv-isolation-1000.webp" width="1000" height="1250" alt="" loading="lazy" decoding="async">
-        <img data-srv="4" src="assets/img/srv-bandes-1000.webp" width="1000" height="1250" alt="" loading="lazy" decoding="async">
-        <img data-srv="5" src="assets/img/srv-renovation-1000.webp" width="1000" height="1250" alt="" loading="lazy" decoding="async">
-      </div>
       <ol class="srv__list">
         <!-- Services : titre + 2 lignes + photo. Modifier ici. -->
-        <li class="srv__item reveal" data-srv="0" tabindex="0">
-          <img class="srv__img" src="assets/img/srv-platrerie-600.webp" width="600" height="750" alt="Plâtrier appliquant un enduit lisse sur un mur en pierre" loading="lazy" decoding="async">
+        <li class="srv__item reveal" data-srv="0">
+          <img class="srv__img" src="assets/img/srv-platrerie-600.webp" srcset="assets/img/srv-platrerie-600.webp 600w, assets/img/srv-platrerie-1000.webp 1000w" sizes="(min-width: 961px) 560px, 120px" width="600" height="750" alt="Plâtrier appliquant un enduit lisse sur un mur en pierre" loading="lazy" decoding="async">
           <div><h3>Plâtrerie traditionnelle et enduits</h3><p>Enduits au plâtre ou à la chaux, reprises de fissures et de tableaux de fenêtres. Des murs droits, lisses et durables.</p></div>
         </li>
-        <li class="srv__item reveal" data-srv="1" tabindex="0">
-          <img class="srv__img" src="assets/img/srv-placo-600.webp" width="600" height="750" alt="Pose d’une plaque de plâtre sur ossature métallique" loading="lazy" decoding="async">
+        <li class="srv__item reveal" data-srv="1">
+          <img class="srv__img" src="assets/img/srv-placo-600.webp" srcset="assets/img/srv-placo-600.webp 600w, assets/img/srv-placo-1000.webp 1000w" sizes="(min-width: 961px) 560px, 120px" width="600" height="750" alt="Pose d’une plaque de plâtre sur ossature métallique" loading="lazy" decoding="async">
           <div><h3>Cloisons en plaques de plâtre</h3><p>Créer une chambre, séparer un grand volume, ajouter une porte&nbsp;: ossature métallique et plaques posées au cordeau.</p></div>
         </li>
-        <li class="srv__item reveal" data-srv="2" tabindex="0">
-          <img class="srv__img" src="assets/img/srv-plafond-600.webp" width="600" height="750" alt="Cuisine provençale avec faux plafond blanc et spots encastrés" loading="lazy" decoding="async">
+        <li class="srv__item reveal" data-srv="2">
+          <img class="srv__img" src="assets/img/srv-plafond-600.webp" srcset="assets/img/srv-plafond-600.webp 600w, assets/img/srv-plafond-1000.webp 1000w" sizes="(min-width: 961px) 560px, 120px" width="600" height="750" alt="Cuisine provençale avec faux plafond blanc et spots encastrés" loading="lazy" decoding="async">
           <div><h3>Faux plafonds et plafonds suspendus</h3><p>Des plafonds neufs parfaitement plans, avec spots encastrés ou éclairage indirect, pour masquer un vieux plafond ou des gaines.</p></div>
         </li>
-        <li class="srv__item reveal" data-srv="3" tabindex="0">
-          <img class="srv__img" src="assets/img/srv-isolation-600.webp" width="600" height="750" alt="Isolation de combles en laine minérale avant pose des plaques" loading="lazy" decoding="async">
+        <li class="srv__item reveal" data-srv="3">
+          <img class="srv__img" src="assets/img/srv-isolation-600.webp" srcset="assets/img/srv-isolation-600.webp 600w, assets/img/srv-isolation-1000.webp 1000w" sizes="(min-width: 961px) 560px, 120px" width="600" height="750" alt="Isolation de combles en laine minérale avant pose des plaques" loading="lazy" decoding="async">
           <div><h3>Doublage et isolation intérieure</h3><p>Isolation des murs et des combles avec doublage placo&nbsp;: plus frais l’été, plus chaud l’hiver, moins de pertes de chaleur.</p></div>
         </li>
-        <li class="srv__item reveal" data-srv="4" tabindex="0">
-          <img class="srv__img" src="assets/img/srv-bandes-600.webp" width="600" height="750" alt="Couteau à enduire sur une bande de joint entre deux plaques" loading="lazy" decoding="async">
+        <li class="srv__item reveal" data-srv="4">
+          <img class="srv__img" src="assets/img/srv-bandes-600.webp" srcset="assets/img/srv-bandes-600.webp 600w, assets/img/srv-bandes-1000.webp 1000w" sizes="(min-width: 961px) 560px, 120px" width="600" height="750" alt="Couteau à enduire sur une bande de joint entre deux plaques" loading="lazy" decoding="async">
           <div><h3>Bandes, joints et finitions</h3><p>Bandes, enduits de finition et ponçage&nbsp;: des joints invisibles et une surface prête à recevoir la peinture.</p></div>
         </li>
-        <li class="srv__item reveal" data-srv="5" tabindex="0">
-          <img class="srv__img" src="assets/img/srv-renovation-600.webp" width="600" height="750" alt="Chambre rénovée aux murs lisses, prête à peindre" loading="lazy" decoding="async">
+        <li class="srv__item reveal" data-srv="5">
+          <img class="srv__img" src="assets/img/srv-renovation-600.webp" srcset="assets/img/srv-renovation-600.webp 600w, assets/img/srv-renovation-1000.webp 1000w" sizes="(min-width: 961px) 560px, 120px" width="600" height="750" alt="Chambre rénovée aux murs lisses, prête à peindre" loading="lazy" decoding="async">
           <div><h3>Rénovation et aménagement intérieur</h3><p>Réaménager une pièce ou tout un étage, du doublage aux finitions, avec un seul interlocuteur du début à la fin.</p></div>
         </li>
       </ol>
@@ -214,14 +206,15 @@
       <li data-cat="enduits"><figure><img src="assets/img/g-escalier-800.webp" width="800" height="1067" alt="Entrée avec escalier en pierre et murs enduits à la chaux" loading="lazy" decoding="async"><figcaption>Enduit à la chaux, cage d’escalier</figcaption></figure></li>
       <li data-cat="isolation"><figure><img src="assets/img/g-combles-800.webp" width="800" height="600" alt="Combles aménagés en chambre, plafond rampant en plaques de plâtre" loading="lazy" decoding="async"><figcaption>Combles aménagés</figcaption></figure></li>
       <li data-cat="cloisons"><figure><img src="assets/img/g-chantier-1-800.webp" width="800" height="1067" alt="Création de pièces en plaques de plâtre sur un chantier K-Bat" loading="lazy" decoding="async"><figcaption>Création de pièces en placo, en cours</figcaption></figure></li>
-      <li data-cat="cloisons"><figure><img src="assets/img/g-dressing-800.webp" width="800" height="600" alt="Chambre avec cloison créant un dressing" loading="lazy" decoding="async"><figcaption>Cloison et dressing</figcaption></figure></li>
       <li data-cat="isolation"><figure><img src="assets/img/g-doublage-800.webp" width="800" height="1067" alt="Doublage isolant sur un mur en pierre, plaques en cours de pose" loading="lazy" decoding="async"><figcaption>Doublage isolant d’un mur en pierre</figcaption></figure></li>
       <li data-cat="plafonds"><figure><img src="assets/img/g-corniche-800.webp" width="800" height="1067" alt="Plafond neuf avec corniche moulurée" loading="lazy" decoding="async"><figcaption>Plafond neuf et corniche</figcaption></figure></li>
       <li data-cat="plafonds"><figure><img src="assets/img/g-cuisine-800.webp" width="800" height="600" alt="Cuisine provençale avec faux plafond et spots encastrés" loading="lazy" decoding="async"><figcaption>Faux plafond et spots, cuisine</figcaption></figure></li>
+      <li data-cat="cloisons"><figure><img src="assets/img/g-dressing-800.webp" width="800" height="600" alt="Chambre avec cloison créant un dressing" loading="lazy" decoding="async"><figcaption>Cloison et dressing</figcaption></figure></li>
       <li data-cat="enduits"><figure><img src="assets/img/g-chaux-800.webp" width="800" height="1067" alt="Enduit à la chaux appliqué au platoir sur un mur en pierre" loading="lazy" decoding="async"><figcaption>Enduit à la chaux sur pierre</figcaption></figure></li>
       <li data-cat="enduits"><figure><img src="assets/img/g-sdb-800.webp" width="800" height="600" alt="Salle de bain aux murs en enduit minéral couleur pierre" loading="lazy" decoding="async"><figcaption>Enduit minéral, salle de bain</figcaption></figure></li>
       <li data-cat="isolation"><figure><img src="assets/img/g-chantier-2-800.webp" width="800" height="1067" alt="Pièce en cours d’isolation et de pose de plaques sur un chantier K-Bat" loading="lazy" decoding="async"><figcaption>Isolation et plaques, en cours</figcaption></figure></li>
     </ul>
+    <p class="works__more"><button class="btn btn--ghost" id="works-more" type="button">Voir toutes nos réalisations<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></p>
   </div>
 </section>
 
@@ -249,7 +242,7 @@
       <h2 id="steps-t">Les étapes de votre chantier</h2>
       <p>Pas de surprise&nbsp;: vous savez à chaque instant où en sont vos travaux.</p>
     </div>
-    <ol class="frise" id="frise" style="--done:0">
+    <ol class="frise" id="frise">
       <li><span class="frise__n">1</span><h3>Visite et devis</h3><p>On passe voir la pièce, on mesure, et vous recevez un devis clair et gratuit.</p></li>
       <li><span class="frise__n">2</span><h3>Protection des lieux</h3><p>Sols, meubles et menuiseries sont protégés avant de commencer.</p></li>
       <li><span class="frise__n">3</span><h3>Pose</h3><p>Ossature, plaques, isolant ou enduit, posés de niveau et au cordeau.</p></li>

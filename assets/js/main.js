@@ -48,21 +48,6 @@
   }), { rootMargin: '0px 0px -10% 0px' });
   $$('.reveal, .map').forEach(el => io.observe(el));
 
-  // Services : la photo de droite suit le service survolé ou lu
-  const srvImgs = $$('.srv__media img'), srvItems = $$('.srv__item');
-  const setSrv = i => {
-    srvImgs.forEach(img => img.classList.toggle('is-on', img.dataset.srv === i));
-    srvItems.forEach(li => li.classList.toggle('is-on', li.dataset.srv === i));
-  };
-  srvItems.forEach(li => {
-    li.addEventListener('mouseenter', () => setSrv(li.dataset.srv));
-    li.addEventListener('focus', () => setSrv(li.dataset.srv));
-  });
-  const srvIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setSrv(e.target.dataset.srv); }),
-    { rootMargin: '-45% 0px -45% 0px' });
-  srvItems.forEach(li => srvIO.observe(li));
-  setSrv('0');
-
   // Avant / après
   const pairs = [
     { k: 'ap1', b: "Avant : mur ancien fissuré, enduit qui s’effrite", a: 'Après : mur enduit parfaitement lisse', c: 'Mur ancien fissuré, repris et enduit : une surface parfaitement lisse.' },
@@ -98,6 +83,17 @@
       tabs[j].focus(); showPair(j);
     });
   });
+  // Précharge les 4 paires dès que la section approche : changement d'onglet instantané
+  const preload = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    preload.disconnect();
+    pairs.forEach(p => ['avant', 'apres'].forEach(s => {
+      const img = new Image();
+      img.sizes = before.sizes;
+      Object.assign(img, src(p.k, s));
+    }));
+  }, { rootMargin: '600px 0px' });
+  preload.observe(cmp);
   // petit mouvement d'invitation quand le curseur apparaît
   if (!reduce) {
     const hint = new IntersectionObserver(([e]) => {
@@ -114,26 +110,39 @@
     hint.observe(cmp);
   }
 
-  // Galerie filtrable
-  const fBtns = $$('.filters button'), items = $$('#grid li');
-  fBtns.forEach(b => b.addEventListener('click', () => {
-    const f = b.dataset.f;
-    fBtns.forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
+  // Galerie : 6 photos au départ, « Voir tout » pour le reste ; mosaïque sans trou
+  const fBtns = $$('.filters button'), items = $$('#grid li'), more = $('#works-more');
+  let f = 'all', all = false;
+  const layout = () => {
+    const vis = items.filter((li, i) => f === 'all' ? (all || i < 6) : li.dataset.cat === f);
     items.forEach(li => {
-      const show = f === 'all' || li.dataset.cat === f;
-      if (show) { li.hidden = false; requestAnimationFrame(() => li.classList.remove('is-out')); }
+      li.classList.remove('is-big', 'is-right', 'is-wide-m');
+      if (vis.includes(li)) { li.hidden = false; requestAnimationFrame(() => li.classList.remove('is-out')); }
       else { li.classList.add('is-out'); setTimeout(() => { if (li.classList.contains('is-out')) li.hidden = true; }, reduce ? 0 : 300); }
     });
+    // ordinateur : une grande photo par groupe de 6, alternée gauche / droite
+    vis.forEach((li, i) => { if (i % 6 === 0) li.classList.add('is-big'); if (i % 12 === 6) li.classList.add('is-right'); });
+    // téléphone (2 colonnes) : nombre impair -> la première photo prend toute la largeur
+    if (vis.length % 2) vis[0].classList.add('is-wide-m');
+    more.parentNode.hidden = all || f !== 'all';
+  };
+  fBtns.forEach(b => b.addEventListener('click', () => {
+    f = b.dataset.f;
+    fBtns.forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
+    layout();
   }));
+  more.addEventListener('click', () => {
+    all = true; layout();
+    items[6].tabIndex = -1; items[6].focus({ preventScroll: true });
+  });
+  layout();
 
-  // Frise des étapes : se remplit au fil de la lecture
-  const frise = $('#frise'), steps = $$('#frise li');
-  const stepIO = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-done'); });
-    const done = steps.filter(li => li.classList.contains('is-done')).length;
-    frise.style.setProperty('--done', Math.max(0, done - 1));
-  }, { rootMargin: '0px 0px -30% 0px', threshold: 1 });
-  steps.forEach(li => stepIO.observe(li));
+  // Frise des étapes : la ligne se trace et les étapes s'allument une à une
+  const frise = $('#frise');
+  const stepIO = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { frise.classList.add('is-in'); stepIO.disconnect(); }
+  }, { threshold: .5 });
+  stepIO.observe(frise);
 
   // Avis : flèches
   const rv = $('#rv');

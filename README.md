@@ -40,4 +40,4 @@ Tous sont repérés dans le code par le commentaire `EXEMPLE – à remplacer`.
 
 ## Modifier un service
 
-Dans `index.html`, section `#services` : chaque service est un `<li class="srv__item">` avec un titre `<h3>`, un texte `<p>` et sa photo (`srv-xxx-600.webp` + `srv-xxx-1000.webp` dans la colonne de droite).
+Dans `index.html`, section `#services` : chaque service est un `<li class="srv__item">` avec un titre `<h3>`, un texte `<p>` et sa photo `<img class="srv__img">` (`srv-xxx-600.webp` + `srv-xxx-1000.webp`).
