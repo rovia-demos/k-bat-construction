@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>document.documentElement.style.setProperty("--vh",innerHeight/100+"px")</script>
+<script>document.documentElement.style.setProperty("--vh",innerHeight/100+"px");matchMedia("(prefers-reduced-motion: reduce)").matches||(document.documentElement.classList.add("wow"),setTimeout(function(){var h=document.querySelector(".hero");h&&!h.classList.contains("is-go")&&h.classList.add("is-go","no-raw")},6000))</script>
 <title>K-Bat Construction · Plâtrier, placo et isolation à Avignon</title>
 <meta name="description" content="Plâtrier à Morières-lès-Avignon depuis 2014 : cloisons placo, faux plafonds, isolation, enduits et finitions prêtes à peindre à Avignon et alentours. Devis gratuit au 06 35 28 99 43.">
 <meta name="robots" content="noindex, nofollow">
@@ -19,8 +19,10 @@
 <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" media="(min-width: 768px)" href="assets/img/hero-1600.webp" imagesrcset="assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="100vw">
+<link rel="preload" as="image" media="(min-width: 768px) and (prefers-reduced-motion: no-preference)" href="assets/img/hero-raw-1600.webp" imagesrcset="assets/img/hero-raw-1600.webp 1600w, assets/img/hero-raw-2400.webp 2400w" imagesizes="100vw">
+<link rel="preload" as="image" media="(max-width: 767px) and (prefers-reduced-motion: no-preference)" href="assets/img/hero-raw-m-720.webp" imagesrcset="assets/img/hero-raw-m-720.webp 720w, assets/img/hero-raw-m-1080.webp 1080w" imagesizes="100vw">
 <link rel="preload" as="image" media="(max-width: 767px)" href="assets/img/hero-m-720.webp" imagesrcset="assets/img/hero-m-720.webp 720w, assets/img/hero-m-1080.webp 1080w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=6">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,7 +41,7 @@
   "sameAs": ["https://www.facebook.com/p/K-bat-construction-61570720221980/"]
 }
 </script>
-<script src="assets/js/main.js?v=4" defer></script>
+<script src="assets/js/main.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -73,6 +75,13 @@
       <img src="assets/img/hero-1600.webp" srcset="assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw" width="2400" height="1357" alt="Salon provençal rénové : murs et plafond parfaitement lisses, poutre en chêne, tomettes et lumière chaude de fin de journée" fetchpriority="high">
     </picture>
     <video class="hero__video" id="hero-video" muted loop playsinline preload="none" aria-hidden="true" data-src="assets/video/hero.mp4" data-src-m="assets/video/hero-m.mp4"></video>
+    <!-- Effet d'ouverture : la pièce en travaux, lissée par un coup de platoir qui révèle la pièce finie (visuel d'illustration) -->
+    <picture class="hero__raw">
+      <source media="(prefers-reduced-motion: reduce)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+      <source media="(max-width: 767px)" srcset="assets/img/hero-raw-m-720.webp 720w, assets/img/hero-raw-m-1080.webp 1080w" sizes="100vw">
+      <img src="assets/img/hero-raw-1600.webp" srcset="assets/img/hero-raw-1600.webp 1600w, assets/img/hero-raw-2400.webp 2400w" sizes="100vw" width="2400" height="1357" alt="" aria-hidden="true">
+    </picture>
+    <span class="hero__blade" aria-hidden="true"></span>
   </div>
   <div class="hero__in wrap">
     <div class="hero__body">
@@ -157,6 +166,12 @@
     </div>
   </div>
 </section>
+
+<!-- BANDEAU -->
+<div class="tape" aria-hidden="true">
+  <div class="tape__row tape__row--b"><div class="tape__track"><span>Cloisons</span><i></i><span>Faux plafonds</span><i></i><span>Enduits</span><i></i><span>Isolation</span><i></i><span>Placo</span><i></i><span>Plâtrerie</span><i></i><span>Cloisons</span><i></i><span>Faux plafonds</span><i></i><span>Enduits</span><i></i><span>Isolation</span><i></i><span>Placo</span><i></i><span>Plâtrerie</span><i></i></div></div>
+  <div class="tape__row tape__row--a"><div class="tape__track"><span>Plâtrerie</span><i></i><span>Placo</span><i></i><span>Isolation</span><i></i><span>Enduits</span><i></i><span>Faux plafonds</span><i></i><span>Cloisons</span><i></i><span>Plâtrerie</span><i></i><span>Placo</span><i></i><span>Isolation</span><i></i><span>Enduits</span><i></i><span>Faux plafonds</span><i></i><span>Cloisons</span><i></i></div></div>
+</div>
 
 <!-- AVANT / APRÈS -->
 <!-- EXEMPLE – à remplacer : visuels d'illustration, à remplacer par les vraies photos avant/après du client -->

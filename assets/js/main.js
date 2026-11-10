@@ -42,6 +42,28 @@
     });
   }
 
+  // Ouverture : on attend que la pièce brute soit prête, puis le coup de platoir la lisse
+  const hero = $('.hero'), raw = $('.hero__raw img');
+  if (root.classList.contains('wow') && raw) {
+    let started = false;
+    const go = ok => { if (started) return; started = true; if (!ok) hero.classList.add('no-raw'); hero.classList.add('is-go'); };
+    const ready = () => raw.decode().then(() => go(true), () => go(false));
+    if (raw.complete && raw.naturalWidth) ready();
+    else { raw.addEventListener('load', ready, { once: true }); raw.addEventListener('error', () => go(false), { once: true }); }
+    setTimeout(() => go(false), 2500); // connexion lente : on saute l'effet
+    $('.hero__raw').addEventListener('animationend', () => hero.classList.add('is-done'));
+  }
+
+  // Photos qui se dévoilent au défilement (galerie, services, « pourquoi nous »)
+  if (!reduce) {
+    const wipes = [...$$('.grid figure'), ...$$('.srv__img'), $('.bento__a'), $('.bento__e')].filter(Boolean);
+    $$('.grid figure').forEach((f, i) => { f.style.transitionDelay = (i % 3) * 90 + 'ms'; });
+    const wio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); wio.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -12% 0px' });
+    wipes.forEach(el => { el.classList.add('wipe'); wio.observe(el); });
+  }
+
   // Apparition douce au défilement
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }

@@ -26,7 +26,7 @@ Tous sont repérés dans le code par le commentaire `EXEMPLE – à remplacer`.
 | Avis | Note 5,0 et les 6 avis clients (Nathalie M., Julien R., Sandrine B., Karim A., Élodie F., Patrick G.) | `index.html` (section `#avis`) |
 | Avis | Bouton « Laisser un avis » : lien vide, à remplacer par le lien de la fiche Google | `index.html` (section `#avis`) |
 | Avant / après | Les 4 paires de photos sont des visuels d'illustration (`ap1` à `ap4`) | `assets/img/ap*-*.webp` |
-| Hero | Photo et vidéo du salon provençal (visuels d'illustration) | `assets/img/hero*`, `assets/video/hero*.mp4` |
+| Hero | Photo et vidéo du salon provençal, et sa version « en travaux » de l’effet d’ouverture (visuels d’illustration) | `assets/img/hero*`, `assets/img/hero-raw*`, `assets/video/hero*.mp4` |
 | Services | Les 6 photos de services (`srv-*`) | `assets/img/srv-*.webp` |
 | Réalisations | 10 photos sur 12 (toutes sauf `g-chantier-1` et `g-chantier-2`) | `assets/img/g-*.webp` |
 | Pourquoi nous | Photos `why-chantier` et `why-outils` | `assets/img/why-*.webp` |
