@@ -376,7 +376,15 @@ select:focus,input:focus,textarea:focus{outline:none;border-color:var(--slate);b
 .footer__legal p{font-size:.85rem;color:#9AA1A8}
 
 /* barre d'appel mobile */
-.callbar{display:none}
+/* barre de contact : pastille flottante sur ordinateur, barre pleine largeur sur téléphone (plus bas) */
+.callbar{display:flex;gap:8px;position:fixed;left:50%;bottom:22px;z-index:60;padding:7px;border-radius:999px;background:rgba(251,250,248,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);box-shadow:0 18px 40px -18px rgba(20,22,25,.45);transform:translate(-50%,calc(100% + 40px));transition:transform .45s var(--ease)}
+.callbar.is-on{transform:translate(-50%,0)}
+.callbar a{display:flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;background:var(--plaster);border:1px solid var(--line);font-weight:650;text-decoration:none;color:var(--slate);transition:background-color .2s,border-color .2s}
+.callbar a:hover{background:#fff;border-color:var(--enduit)}
+.callbar a .i{width:20px;height:20px}
+.callbar .callbar__devis{background:var(--terra);border-color:var(--terra);color:#fff}
+.callbar .callbar__devis:hover{background:var(--terra-d);border-color:var(--terra-d)}
+@media (min-width:768px){.footer{padding-bottom:110px}}
 
 /* ---------- responsive ---------- */
 @media (max-width:1080px){
@@ -458,9 +466,9 @@ select:focus,input:focus,textarea:focus{outline:none;border-color:var(--slate);b
   .surf output{min-width:80px}
   .footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
   .footer__in{grid-template-columns:1fr;gap:28px}
-  .callbar{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(251,250,248,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 -10px 30px -12px rgba(0,0,0,.25);transform:translateY(110%);transition:transform .45s var(--ease)}
+  .callbar{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(251,250,248,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 -10px 30px -12px rgba(0,0,0,.25);transform:translateY(110%);transition:transform .45s var(--ease);border:0;border-radius:0}
   .callbar.is-on{transform:none}
-  .callbar a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:50px;border-radius:999px;background:var(--plaster);border:1px solid var(--line);font-weight:650;font-size:.95rem;text-decoration:none;color:var(--slate)}
+  .callbar a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:50px;padding:0 6px;border-radius:999px;background:var(--plaster);border:1px solid var(--line);font-weight:650;font-size:.95rem;text-decoration:none;color:var(--slate)}
   .callbar a .i{width:20px;height:20px}
   .callbar .callbar__devis{background:var(--terra);border-color:var(--terra);color:#fff}
 }
